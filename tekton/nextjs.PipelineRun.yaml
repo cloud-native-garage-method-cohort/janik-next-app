@@ -1,0 +1,24 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: janik-next-app-
+spec:
+  serviceAccountName: build-bot
+  params:
+    - name: app-name
+      value: janik-next-app
+    - name: source-repo
+      value: https://github.com/cloud-native-garage-method-cohort/janik-next-app
+    - name: image-repo
+      value: quay.io/repository/janikbuecher/janik-next-app
+  pipelineRef:
+    name: nextjs
+  workspaces:
+    - name: pipeline-shared-data
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 1Gi
+          accessModes:
+            - ReadWriteOnce
