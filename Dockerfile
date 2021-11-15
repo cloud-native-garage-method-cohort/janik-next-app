@@ -15,17 +15,6 @@ COPY . ./
 RUN NODE_ENV=production npm run build
 
 # ================================================================
-# cypress stage
-# ================================================================
-FROM cypress/base:14.16.0 as cypress
-WORKDIR /app
-# copy cypress from the builder image
-COPY --from=builder /root/.cache /root/.cache/
-COPY --from=builder /app ./
-ENV NODE_ENV=test
-ENV NEXT_TELEMETRY_DISABLED=1
-
-# ================================================================
 # final deploy stage
 # ================================================================
 FROM $BASE_IMAGE
