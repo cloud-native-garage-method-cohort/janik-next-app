@@ -46,6 +46,17 @@ spec:
                     storage: 1Gi
                 accessModes:
                   - ReadWriteOnce
+          - name: gitops-repository
+            volumeClaimTemplate:
+              spec:
+                resources:
+                  requests:
+                    storage: 1Gi
+                accessModes:
+                - ReadWriteOnce
+          - name: git-credentials
+            secret:
+              secretName: git-credentials
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
