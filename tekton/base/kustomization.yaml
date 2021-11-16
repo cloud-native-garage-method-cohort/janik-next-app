@@ -11,4 +11,3 @@ resources:
   - git-credentials.Secret.yaml
   - production-repository.ConfigMap.yaml
   - save-configuration.Task.yaml
-  
