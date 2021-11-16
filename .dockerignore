@@ -1,3 +1,5 @@
 node_modules/
 .idea/
 manifests.yaml
+tekton/
+k8s/
